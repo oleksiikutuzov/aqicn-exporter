@@ -35,7 +35,7 @@ config = {
     'host_port': 80,
     'lat': '',
     'lon': '',
-    'token': 'demo',
+    'token': '',
     'timeout': 10.0
 }
 
