@@ -133,3 +133,4 @@ response.json
 test.py
 *.local
 .vscode
+env.list

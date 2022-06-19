@@ -10,7 +10,7 @@ from threading import Event
 import requests
 
 """
-Enviroment variable lables used to read values from.
+Environment variable labels used to read values from.
 HOST_PORT       Sets port to run the prometheus http server, default to 80
 LATITUDE        Sets the latitude to use for the AQI calculation
 LONGITUDE       Sets the longitude to use for the AQI calculation
@@ -18,11 +18,11 @@ DECONZ_TOKEN    Sets deconz token, default is 'demo'
 UPDATE_INTERVAL Sets interval between updates in seconds, default is 10.0 seconds
 """
 
-POST_LABLE = 'HOST_PORT'
-LATITUDE_LABLE = 'LATITUDE'
-LONGITUDE_LABLE = 'LONGITUDE'
-TOKEN_LABLE = 'AQICN_TOKEN'
-TIMEOUT_LABLE = 'UPDATE_INTERVAL'
+POST_LABEL = 'HOST_PORT'
+LATITUDE_LABEL = 'LATITUDE'
+LONGITUDE_LABEL = 'LONGITUDE'
+TOKEN_LABEL = 'AQICN_TOKEN'
+TIMEOUT_LABEL = 'UPDATE_INTERVAL'
 
 exit = Event()
 
@@ -32,27 +32,27 @@ def signalShuttdown(self, *args):
 
 
 config = {
-    'host_port': 80,
+    'host_port': 9090,
     'lat': '',
     'lon': '',
     'token': '',
     'timeout': 10.0
 }
 
-if POST_LABLE in os.environ:
-    config['host_port'] = int(os.environ[POST_LABLE])
+if POST_LABEL in os.environ:
+    config['host_port'] = int(os.environ[POST_LABEL])
 
-if LATITUDE_LABLE in os.environ:
-    config['lat'] = os.environ[LATITUDE_LABLE]
+if LATITUDE_LABEL in os.environ:
+    config['lat'] = os.environ[LATITUDE_LABEL]
 
-if LONGITUDE_LABLE in os.environ:
-    config['lon'] = os.environ[LONGITUDE_LABLE]
+if LONGITUDE_LABEL in os.environ:
+    config['lon'] = os.environ[LONGITUDE_LABEL]
 
-if TOKEN_LABLE in os.environ:
-    config['token'] = os.environ[TOKEN_LABLE].strip()
+if TOKEN_LABEL in os.environ:
+    config['token'] = os.environ[TOKEN_LABEL].strip()
 
-if TIMEOUT_LABLE in os.environ:
-    config['timeout'] = float(os.environ[TIMEOUT_LABLE])
+if TIMEOUT_LABEL in os.environ:
+    config['timeout'] = float(os.environ[TIMEOUT_LABEL])
 
 
 def create_logger(scope):
